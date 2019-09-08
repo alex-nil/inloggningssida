@@ -4,7 +4,7 @@
 //Variabler för användarnamn och lösenord
 let namn = "test";
 let lösenord = "1234";
-
+let wrapper = document.getElementById("wrapper");
 //Hämtar localstorage om användaren är inloggad eller ej
 let inloggad = localStorage.getItem("aktiv");
 
@@ -56,26 +56,25 @@ function loggedIn() {
         div2.setAttribute("id", "div2");            //Sätter id och id-namn
         let myBtn2 = document.createElement("button");  //Skapar knapp
         myBtn2.setAttribute("id", "myBtn2");        //skapar id för knapp
-        document.body.appendChild(div2);        //lägger till div till listan
+        wrapper.appendChild(div2);        //lägger till div till listan
         let para = document.createElement("h1");  //Skapar h1 element
         div2.appendChild(para).innerText = "Välkommen!";    //lägger till h1 till div tag, lägger till text också
         div2.appendChild(myBtn2).innerText = "Logga Ut";    //Lägger till logga ut knapp till div element
         let logBtn = document.getElementById("myBtn2");     //Hämtar den nya knapp id
         logBtn.addEventListener("click", logOut);           //Lägger till en eventlistener för nya knappen och kallar på en funktion
-
-
-        } else if (inloggad === "false") {      //om inlogg = false så kommer en annan sida skapas
-
-        let div2 = document.createElement("div2");  //skapar div element
-        div2.setAttribute("id", "div2");            //Sätter id
+        } 
+        
+        else {//om inlogg = false så kommer en annan sida skapas
+        let div3 = document.createElement("div3");  //skapar div element
+        div3.setAttribute("id", "div3");            //Sätter id
         let myBtn2 = document.createElement("button"); //Skapar knapp
-        myBtn2.setAttribute("id", "myBtn2");        //sätter id för knapp
-        document.body.appendChild(div2);            //lägger till div2 till sidan
-
+        myBtn2.setAttribute("id", "myBtn3");        //sätter id för knapp
+        wrapper.appendChild(div3);            //lägger till div2 till sidan
+        console.log("Else")
         let para = document.createElement("h1");    //Skapar h1 element
-        div2.appendChild(para).innerText = "Fel lösen!";    //lägger till h1 med text
-        div2.appendChild(myBtn2).innerText = "Testa igen";  //lägger till knapp med text
-        let logBtn = document.getElementById("myBtn2");     //hämtar id för knapp
+        div3.appendChild(para).innerText = "Fel lösen!";    //lägger till h1 med text
+        div3.appendChild(myBtn2).innerText = "Testa igen";  //lägger till knapp med text
+        let logBtn = document.getElementById("myBtn3");     //hämtar id för knapp
         logBtn.addEventListener("click", logOut);           //lägger till eventlistener för knapp och kallar på funktion.
         }
 
@@ -83,7 +82,10 @@ function loggedIn() {
 
 //Funktion för att logga ut och rensa användare
 function logOut() {
-    div2.style.display = "none";        //Tar bort log in / fel lösen sidan
-    div1.style.display = "inline-block"; //lägger till gamla sidan
-    localStorage.clear();               //Tömmer localstorage
+    wrapper = document.getElementById("wrapper");
+        while (wrapper.hasChildNodes()) {
+            wrapper.removeChild(wrapper.firstChild)
+        }
+    div1.style.display = "inline-block";
+    localStorage.clear();              
 }
