@@ -36,7 +36,7 @@ function loggaIn() {
         inloggad = localStorage.getItem("aktiv");       //Lägger in localstorage i variabel
         loggedIn();                                     //Kallar på fukntionen loggedIn()
         console.log("funkar");                          //Skriver ut till konsol att det fungerar.
-    } else if (userId !== namn && userPass !== lösenord) { //Om de inte matchar
+    } else  { //Om de inte matchar
         console.log("Fel");                             //Skriver ut fel till konsolen
         loggedIn();                                     //kallar på loggedIn() funktoionen
         localStorage.setItem("aktiv", false);           //Sätter localstorage till false
