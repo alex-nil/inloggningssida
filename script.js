@@ -4,7 +4,7 @@
 //Variabler för användarnamn och lösenord
 let namn = "test";
 let lösenord = "1234";
-let wrapper = document.getElementById("wrapper");
+let wrapper = document.getElementById("wrapper");       //Hämtar id för div wrapper
 //Hämtar localstorage om användaren är inloggad eller ej
 let inloggad = localStorage.getItem("aktiv");
 
@@ -19,7 +19,7 @@ let div1 = document.getElementById("div1");
 if (inloggad === "true") {
     loggedIn();
 } else {
-    console.log("not logged in");
+    console.log("not logged in"); //Skriver ut till konsolen om man är inloggad
 }
 
 
@@ -70,7 +70,7 @@ function loggedIn() {
         let myBtn2 = document.createElement("button"); //Skapar knapp
         myBtn2.setAttribute("id", "myBtn3");        //sätter id för knapp
         wrapper.appendChild(div3);            //lägger till div2 till sidan
-        console.log("Else")
+
         let para = document.createElement("h1");    //Skapar h1 element
         div3.appendChild(para).innerText = "Fel lösen!";    //lägger till h1 med text
         div3.appendChild(myBtn2).innerText = "Testa igen";  //lägger till knapp med text
@@ -82,10 +82,10 @@ function loggedIn() {
 
 //Funktion för att logga ut och rensa användare
 function logOut() {
-    wrapper = document.getElementById("wrapper");
+    wrapper = document.getElementById("wrapper");       //kollar om wrapper har innehåll , och medans den har det så raderar den allt inom wrapper
         while (wrapper.hasChildNodes()) {
             wrapper.removeChild(wrapper.firstChild)
         }
-    div1.style.display = "inline-block";
-    localStorage.clear();              
-}
+    div1.style.display = "inline-block";            //ställer tillbaka förstasidan
+    localStorage.clear();                           //Rensar localstorage
+}       
